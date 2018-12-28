@@ -1,9 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
 
 namespace Training_QA_Automation.Framework.PageObjects
 {
@@ -25,7 +21,27 @@ namespace Training_QA_Automation.Framework.PageObjects
         /// create an account = a.btn (CssSelector)
         [FindsBy(How = How.CssSelector, Using = "a.btn")]
         public IWebElement CreateNewAccount { get; set; }
-        
+
+        /// input -> id = Email
+        [FindsBy(How = How.Id, Using = "Email")]
+        public IWebElement EmailInput { get; set; }
+
+        /// Writing a Random email
+        public Faker<RegistrationPage> GenerateEmail()
+        {
+            var registerEmail = new Faker<RegistrationPage>()
+                .CustomInstantiator(f => new RegistrationPage(driver))
+                .RuleSet("HappyPath",
+                (set) =>
+                {
+                    set.StrictMode(false);
+                    set.RuleFor(a => a.EmailInput, f => f.Person.EmailInput);
+                }
+                );
+
+            return registerEmail;
+        }
+
         /// Method to navigate into the website
         public void GoToPage()
         {
