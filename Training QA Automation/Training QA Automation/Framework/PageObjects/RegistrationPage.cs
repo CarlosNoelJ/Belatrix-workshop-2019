@@ -6,7 +6,7 @@ namespace Training_QA_Automation.Framework.PageObjects
     public class RegistrationPage
     {
         private IWebDriver driver;
-        private string url = "https://www.taxact.com/";
+        private string url = "https://www.taxact.com";
 
         public RegistrationPage(IWebDriver driver)
         {
