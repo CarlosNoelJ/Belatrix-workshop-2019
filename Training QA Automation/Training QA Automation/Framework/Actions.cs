@@ -25,9 +25,8 @@ namespace Training_QA_Automation.Framework.PageObjects
         {
 
         }
-
-
-        public static void WaitForPageToFinishLoading(IWebDriver driver, int timeout=10)
+        
+        public static void WaitForPageToFinishLoading(IWebDriver driver, int timeout=20)
         {
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(timeout);
         }
