@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using System;
+using System.Linq;
 using Training_QA_Automation.Framework.PageObjects;
 
 namespace Training_QA_Automation.Tests
@@ -14,6 +15,9 @@ namespace Training_QA_Automation.Tests
         
         IWebDriver driver;
         ChromeOptions options = new ChromeOptions();
+        //string emailCreated;
+        //string securityCode;
+        //string[] arraySecurityCode;
         
         [TestInitialize]
         public void Initialize()
@@ -30,13 +34,36 @@ namespace Training_QA_Automation.Tests
         }
 
         [TestMethod]
-        public void Test1()
+        public void CreateNewAccount()
         {
             var registerPage = new RegistrationPage(driver);
             registerPage.GoToPage();
             clickOn(driver, registerPage.SignInButton);
             clickOn(driver, registerPage.CreateNewAccount);
+
+            //clickOn(driver, registerPage.EmailInput);
+            //registerPage.Generator().StrictMode(false).Generate("HappyPath, Dafault");
+            //emailCreated = registerPage.GetEmailCreated();
+            //clickOn(driver, registerPage.BtnNext);
+            //OpenNewTab(driver);
+            //var mailinatorPage = new MailinatorPage(driver);
+            //mailinatorPage.GoToMailinator();
+            //writeInput(driver, mailinatorPage.InputEmail, "inboxfield", emailCreated);
+            //clickOn(driver, mailinatorPage.BtnGo);
+            //clickOn(driver, mailinatorPage.LastMail);
+            //securityCode = getTextFromElement(driver, "mobileContentSize");
+            //returnToPage(driver);
+            //arraySecurityCode = giveBackArray(securityCode);
+
+            //foreach (var item in arraySecurityCode)
+            //{
+
+            //}
+
+
             Assert.AreEqual("Create a TaxAct account to file your taxes online", driver.Title);
+            /// Sign Out -> id = sign-out-desk (findelement)
+
         }
 
         [TestCleanup]
